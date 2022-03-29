@@ -1,0 +1,7 @@
+version: '2.0'
+image: ghcr.io/scm101/restic:latest
+duration: 90
+project: restic
+target: restic-backup
+cmds:
+  - cmd: /usr/src/restic backup -r /store --stdin
