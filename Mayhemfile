@@ -4,5 +4,5 @@ duration: 90
 project: restic
 target: restic-backup
 cmds:
-  - cmd: /usr/src/restic backup -r /store --stdin
+  - cmd: /go/src/github.com/scm101/restic/restic backup -r /store --stdin
     timeout: 10
