@@ -13,10 +13,8 @@ FROM alpine:latest AS restic
 
 RUN apk add --update --no-cache ca-certificates fuse openssh-client tzdata
 
-COPY --from=builder /go/src/github.com/scm101/restic/restic /usr/bin
-
 ENV RESTIC_PASSWORD="fuzzpass"
 
-RUN /usr/bin/restic init --repo /store
+RUN  /go/src/github.com/scm101/restic/restic init --repo /store
 
-ENTRYPOINT ["/usr/bin/restic"]
+ENTRYPOINT ["/go/src/github.com/scm101/restic/restic", "backup", "-r", "/store", "--stdin"]
