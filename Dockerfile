@@ -13,7 +13,7 @@ FROM alpine:latest AS restic
 
 RUN apk add --update --no-cache ca-certificates fuse openssh-client tzdata
 
-COPY --from=builder /go/src/github.com/restic/restic/restic /usr/bin
+COPY --from=builder /go/src/github.com/scm101/restic/restic /usr/bin
 
 ENV RESTIC_PASSWORD="fuzzpass"
 
