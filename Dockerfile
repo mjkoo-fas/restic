@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine AS builder
+FROM golang:1.17.3-buster as go-target
 
 WORKDIR /go/src/github.com/scm101/restic
 
@@ -8,10 +8,6 @@ RUN go mod download
 
 COPY . .
 RUN go run build.go
-
-FROM alpine:latest AS restic
-
-RUN apk add --update --no-cache ca-certificates fuse openssh-client tzdata
 
 ENV RESTIC_PASSWORD="fuzzpass"
 
